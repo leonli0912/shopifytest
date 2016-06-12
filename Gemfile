@@ -10,6 +10,22 @@ group :production do
 end
 group :development, :test do
 	gem "sqlite3"
+	# helpful gems
+	gem "better_errors"
+	gem "binding_of_caller"
+
+	# tesing framework
+	gem 'rspec-rails'
+	gem "factory_girl_rails"
+	gem "capybara"
+	gem "fakeweb"
+
+	#automated testing
+	gem 'guard'
+	gem 'guard-rspec'
+
+	#only install the rb-fsevent gem if work on max osx
+	gem 'rb-fsevent'
 end
 # Use sqlite3 as the database for Active Record
 
