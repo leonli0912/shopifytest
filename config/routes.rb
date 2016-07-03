@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  resources :accounts
+  resources :accounts
+  resources :accounts
+  resources :accounts
+  resources :accounts
+  resources :accouts
+  resources :accouts
+  resources :accouts
+  resources :accounts
+  resources :accounts
   get 'dash_board/index'
   root 'dash_board#index'
 
