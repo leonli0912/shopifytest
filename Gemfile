@@ -34,7 +34,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'execjs'
 gem 'twitter-bootstrap-rails'
 gem 'bootstrap-sass'
-
+gem 'shopify_api'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
