@@ -5,6 +5,9 @@ Rails.application.configure do
   # test suite. You never need to work with it otherwise. Remember that
   # your test database is "scratch space" for the test suite and is wiped
   # and recreated between test runs. Don't rely on the data there!
+   SHOPIFY_API_KEY = "2f2cefd8238aa5f80d3bf7988b616fe2"
+   SHOPIFY_SHARED_SECRET = "cb3e3c37c717a318abe77da5782ce7b9"
+   DOMAIN = "http://localhost:3000/go"
   config.cache_classes = true
 
   # Do not eager load code on boot. This avoids loading your whole application

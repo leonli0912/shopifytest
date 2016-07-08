@@ -34,7 +34,11 @@ RSpec.describe AccountsController, type: :controller do
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {
+          "shopify_account_url" =>""
+    }
+
+    #skip("Add a hash of attributes invalid for your model")
   }
 
   # This should return the minimal set of values that should be in the session
@@ -109,14 +113,19 @@ RSpec.describe AccountsController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {
+        "shopify_account_url" =>"MyString1",
+        "shopify_password" =>"MyString1"
+        }
+        #skip("Add a hash of attributes valid for your model")
       }
 
       it "updates the requested account" do
         account = Account.create! valid_attributes
         put :update, {:id => account.to_param, :account => new_attributes}, valid_session
         account.reload
-        skip("Add assertions for updated state")
+        expect(assigns(:account)).to eq(account)
+        #skip("Add assertions for updated state")
       end
 
       it "assigns the requested account as @account" do
