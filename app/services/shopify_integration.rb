@@ -1,13 +1,17 @@
 class ShopifyIntegration
 
-  attr_accessor :url, :password, :account_id
+  attr_accessor :url, :password, :api_key,:shared_secret
 
   def initialize(params)
     # Ensure that all the parameters are passed in
-    %w{url password account_id}.each do |field|
+    %w{url password }.each do |field|
       raise ArgumentError.new("params[:#{field}] is required") if params[field.to_sym].blank?
 
       # If present, then set as an instance variable
+      #instance_variable_set("@#{field}", params[field.to_sym])
+    end
+    %w{url password api_key shared_secret}.each do |field|
+        # If present, then set as an instance variable
       instance_variable_set("@#{field}", params[field.to_sym])
     end
   end
@@ -26,26 +30,26 @@ class ShopifyIntegration
 
   end
 
-  def update_account
+  # def update_account
 
-    # This method grabs the ShopifyAPI::Shop information
-    # and updates the local record
+  #   # This method grabs the ShopifyAPI::Shop information
+  #   # and updates the local record
 
-    shop = ShopifyAPI::Shop.current
+  #   shop = ShopifyAPI::Shop.current
 
-    # Map the shop fields to our local model
-    # Choosing clarity over cleverness
-    account = Account.find @account_id
+  #   # Map the shop fields to our local model
+  #   # Choosing clarity over cleverness
+  #   account = Account.find @account_id
 
-    account.shopify_shop_id = shop.id
-    account.shopify_shop_name = shop.name
-    account.shop_owner = shop.shop_owner
-    account.email = shop.email
+  #   account.shopify_shop_id = shop.id
+  #   account.shopify_shop_name = shop.name
+  #   account.shop_owner = shop.shop_owner
+  #   account.email = shop.email
 
-    account.save
+  #   account.save
 
 
-  end
+  # end
 
   def import_orders
 
@@ -76,7 +80,7 @@ class ShopifyIntegration
                             order_date: shopify_order.created_at,
                             total: shopify_order.total_price,
                             financial_status: shopify_order.financial_status,
-                            account_id: @account_id
+                            #account_id: @account_id
                             )
 
           # Iterate through the line_items
@@ -140,7 +144,7 @@ class ShopifyIntegration
           product = Product.new(last_shopify_sync: DateTime.now,
                                 name: shopify_product.title,
                                 shopify_product_id: shopify_product.id,
-                                account_id: @account_id
+                                #account_id: @account_id
                                 )
           unless product.save
             failed += 1
