@@ -1,16 +1,25 @@
 Rails.application.routes.draw do
+  resources :orders do
+    collection do
+      get 'import'
+    end
+  end 
+  
   resources :variants
+  
   resources :products do
     collection do
       get 'import'
     end
     resources :variants
   end
+  
   resources :accounts do
     member do
       get 'test_connection'
     end
   end
+  
   get 'dash_board/index'
   root 'dash_board#index'
 
