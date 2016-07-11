@@ -12,7 +12,7 @@ class ProductsController < ApplicationController
       password:account.shopify_password)
     respond_to do |format|
       shopify_integration.connect 
-      results = shopify_integration.import_products
+      result = shopify_integration.import_products
       format.html {
         redirect_to ({action: :index}),
         notice: "#{result[:created].to_i} created,

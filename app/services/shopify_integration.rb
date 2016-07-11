@@ -141,7 +141,7 @@ class ShopifyIntegration
           product = Product.new(last_shopify_sync: DateTime.now,
                                 name: shopify_product.title,
                                 shopify_product_id: shopify_product.id,
-                                account_id: @account_id
+                                #account_id: @account_id
                                 )
           unless product.save
             failed += 1
