@@ -1,7 +1,7 @@
 <%- content_for :sidebar do-%>
     <h4>New Contest!</h4>
     <p>Use the form below to run a new Contest. Fields marked with * are required</p>
-    <%= form_for @contest, :url => "create_contest_path" do |f| %>
+    <%= form_for @contest, :url => create_contest_path do |f| %>
         <div class="control-group">
             <%= f.label :name, "Contest Name *"  %>
                 <div class="controls">

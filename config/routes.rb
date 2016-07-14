@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   end
   
   get 'dash_board/index'
+  post "create_contest" => 'dashboard#create_contest'
   root 'dash_board#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
