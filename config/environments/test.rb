@@ -5,9 +5,9 @@ Rails.application.configure do
   # test suite. You never need to work with it otherwise. Remember that
   # your test database is "scratch space" for the test suite and is wiped
   # and recreated between test runs. Don't rely on the data there!
-   SHOPIFY_API_KEY = "2f2cefd8238aa5f80d3bf7988b616fe2"
-   SHOPIFY_SHARED_SECRET = "f3340157d8ec16c5c96c60d1759c1aa0"
-   DOMAIN = "https://9d31c8928aff767b747f9f918dde997c:df72985be3b69617b2456d6fa2bb1de0@fitnessyun.myshopify.com/admin/orders.json"
+   SHOPIFY_API_KEY = "123abc"
+   SHOPIFY_SHARED_SECRET = "test-secret"
+   DOMAIN = "http://localost:3000"
 
   config.cache_classes = true
 

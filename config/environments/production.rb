@@ -1,8 +1,8 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-   SHOPIFY_API_KEY = "2f2cefd8238aa5f80d3bf7988b616fe2"
-   SHOPIFY_SHARED_SECRET = "f3340157d8ec16c5c96c60d1759c1aa0"
-   DOMAIN = "https://9d31c8928aff767b747f9f918dde997c:df72985be3b69617b2456d6fa2bb1de0@fitnessyun.myshopify.com/admin/orders.json"
+   SHOPIFY_API_KEY = ENV["SHOPIFY_API_KEY"]
+   SHOPIFY_SHARED_SECRET = ENV["SHOPIFY_SHARED_SECRET"]
+   DOMAIN = ENV["DOMAIN"]
 
   # Code is not reloaded between requests.
   config.cache_classes = true
