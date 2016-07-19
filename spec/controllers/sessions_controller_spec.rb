@@ -1,25 +1,35 @@
 require 'rails_helper'
+require 'spec_helper'
 
-RSpec.describe SessionsController, type: :controller do
+describe SessionsController do
 
-  describe "GET #new" do
+  # Ensure that an Account exists
+  before do
+    # We need an Account in the system
+    @account = FactoryGirl.create(:account)
+  end
+
+  # This should return the minimal set of attributes required to create a valid
+  # Order. As you add validations to Order, be sure to
+  # adjust the attributes here as well.
+  let(:valid_attributes) { { account_id: @account.id } }
+
+  # This should return the minimal set of values that should be in the session
+  # in order to pass any filters (e.g. authentication) defined in
+  # OrdersController. Be sure to keep this updated too.
+  let(:valid_session) { {current_account_id: @account.id} }
+
+  describe "GET 'new'" do
     it "returns http success" do
-      get :new
-      expect(response).to have_http_status(:success)
+      get 'new'
+      response.should be_success
     end
   end
 
-  describe "GET #create" do
+  describe "GET 'destroy'" do
     it "returns http success" do
-      get :create
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET #destroy" do
-    it "returns http success" do
-      get :destroy
-      expect(response).to have_http_status(:success)
+      get 'destroy', valid_session
+      response.should be_redirect
     end
   end
 
