@@ -4,10 +4,9 @@ class ShopifyIntegration
 
   def initialize(params)
     # Ensure that all the parameters are passed in
-    %w{url password }.each do |field|
+    %w{url password account_id}.each do |field|
       raise ArgumentError.new("params[:#{field}] is required") if params[field.to_sym].blank?
-    end
-   %w{url password account_id}.each do |field|
+
       # If present, then set as an instance variable
       instance_variable_set("@#{field}", params[field.to_sym])
     end
@@ -71,13 +70,13 @@ class ShopifyIntegration
           # If not already imported, create a new order
           order = Order.new(number: shopify_order.name,
                             email: shopify_order.email,
-                            #first_name: shopify_order.billing_address.first_name,
-                            #last_name: shopify_order.billing_address.last_name,
+                            first_name: shopify_order.billing_address.first_name,
+                            last_name: shopify_order.billing_address.last_name,
                             shopify_order_id: shopify_order.id,
                             order_date: shopify_order.created_at,
                             total: shopify_order.total_price,
                             financial_status: shopify_order.financial_status,
-                            #account_id: @account_id
+                            account_id: @account_id
                             )
 
           # Iterate through the line_items
@@ -141,7 +140,7 @@ class ShopifyIntegration
           product = Product.new(last_shopify_sync: DateTime.now,
                                 name: shopify_product.title,
                                 shopify_product_id: shopify_product.id,
-                                #account_id: @account_id
+                                account_id: @account_id
                                 )
           unless product.save
             failed += 1

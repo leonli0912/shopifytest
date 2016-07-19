@@ -93,7 +93,7 @@ describe ShopifyIntegration do
 
     it "should activate a session with Shopify" do
 
-      ShopifyAPI::Session.should_receive(:setup).with(:api_key => '123abc', :secret => 'test-secret')
+      ShopifyAPI::Session.should_receive(:setup).with(:api_key => SHOPIFY_API_KEY, :secret => SHOPIFY_SHARED_SECRET)
       ShopifyAPI::Session.should_receive(:new).with("http://url.to.store", "secretsecret").and_return(@session)
       ShopifyAPI::Base.should_receive(:activate_session).with(@session)
       @shopify_integration.connect
