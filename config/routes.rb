@@ -5,6 +5,11 @@ Rails.application.routes.draw do
 
   get 'sessions/destroy'
 
+  get 'shopify/authorize' => 'shopify#authorize'
+  post 'shopify/authorize' => 'shopify#authorize'
+  get 'shopify/install' => 'shopify#install'
+  post 'shopify/install' => 'shopify#install'
+  
   resources :orders do
     collection do
       get 'import'

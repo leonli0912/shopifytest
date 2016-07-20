@@ -7,6 +7,7 @@ Rails.application.configure do
   # and recreated between test runs. Don't rely on the data there!
    SHOPIFY_API_KEY = "123abc"
    SHOPIFY_SHARED_SECRET = "test-secret"
+
    DOMAIN = "http://localost:3000"
 
   config.cache_classes = true

@@ -5,8 +5,11 @@ Rails.application.configure do
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
   
-   SHOPIFY_API_KEY = "2f2cefd8238aa5f80d3bf7988b616fe2"
-   SHOPIFY_SHARED_SECRET = "f3340157d8ec16c5c96c60d1759c1aa0"
+   #SHOPIFY_API_KEY = "2f2cefd8238aa5f80d3bf7988b616fe2"
+   #SHOPIFY_SHARED_SECRET = "f3340157d8ec16c5c96c60d1759c1aa0"
+   SHOPIFY_API_KEY = "34d0736df67b1e697b603ed91adc3a43"
+   SHOPIFY_SHARED_SECRET = "d560f8e4b0d492e63df3636669fa375f"
+   REDERICT_URL="https://shopifytest-leon0912.c9users.io/shopify/install"
    DOMAIN = "https://9d31c8928aff767b747f9f918dde997c:df72985be3b69617b2456d6fa2bb1de0@fitnessyun.myshopify.com/admin/orders.json"
 
   config.cache_classes = false
