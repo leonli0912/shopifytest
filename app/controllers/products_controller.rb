@@ -1,27 +1,9 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :require_login
 
   # GET /products
   # GET /products.json
-  def import
-    account = Account.first
-    shopify_integration = ShopifyIntegration.new(
-      api_key:account.shopify_api_key,
-      shared_secret:account.shopify_shared_secret,
-      url:account.shopify_account_url,
-      password:account.shopify_password)
-    respond_to do |format|
-      shopify_integration.connect 
-      result = shopify_integration.import_products
-      format.html {
-        redirect_to ({action: :index}),
-        notice: "#{result[:created].to_i} created,
-        #{result[:updated]} updated,
-        #{result[:failed]} failed"
-      }
-    end
-  end
-
   def index
     @products = current_account.products.all
   end
@@ -48,9 +30,9 @@ class ProductsController < ApplicationController
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
-        format.json { render :show, status: :created, location: @product }
+        format.json { render action: 'show', status: :created, location: @product }
       else
-        format.html { render :new }
+        format.html { render action: 'new' }
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
@@ -62,9 +44,9 @@ class ProductsController < ApplicationController
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
-        format.json { render :show, status: :ok, location: @product }
+        format.json { head :no_content }
       else
-        format.html { render :edit }
+        format.html { render action: 'edit' }
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
@@ -75,19 +57,40 @@ class ProductsController < ApplicationController
   def destroy
     @product.destroy
     respond_to do |format|
-      format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
+      format.html { redirect_to products_url }
       format.json { head :no_content }
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_product
-      @product = current_account.products.find(params[:id])
+  # GET /products/import
+  # GET /products/import.json
+  def import
+
+    # Connect to Shopify
+    shopify_integration = ShopifyIntegration.new(url: current_account.shopify_account_url,
+    password: current_account.shopify_password, account_id: current_account.id)
+
+    respond_to do |format|
+      if shopify_integration.connect
+        result = shopify_integration.import_products
+        format.html { redirect_to ({action: :index}), notice: "#{result[:created].to_i} created, #{result[:updated]} updated, #{result[:failed]} failed." }
+        format.json { render json: "#{result[:created].to_i} created,  #{result[:updated]} updated, #{result[:failed]} failed." }
+      else
+        format.html { redirect_to ({action: :index}), alert: "Unable to connect to Shopify" }
+        format.json { render json: "Unable to connect to Shopify", status: :unprocessable_entity }
+      end
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def product_params
-      params.require(:product).permit(:name, :shopify_product_id, :last_shopify_sync)
-    end
+  end
+
+  private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_product
+    @product = current_account.products.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def product_params
+    params.require(:product).permit(:name, :shopify_product_id, :last_shopify_sync)
+  end
 end

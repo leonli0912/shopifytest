@@ -11,7 +11,7 @@ Rails.application.configure do
    SHOPIFY_SHARED_SECRET = "d560f8e4b0d492e63df3636669fa375f"
    REDERICT_URL="https://shopifytest-leon0912.c9users.io/shopify/install"
    NONCE="shopifynonce"
-   DOMAIN = "https://9d31c8928aff767b747f9f918dde997c:df72985be3b69617b2456d6fa2bb1de0@fitnessyun.myshopify.com/admin/orders.json"
+   DOMAIN = "https://shopifytest-leon0912.c9users.io"
 
   config.cache_classes = false
 
