@@ -446,7 +446,7 @@ context "update_account" do
                            timestamp: "1337178173",
                            signature: "929b77106a419bde96b151b318557a11"}
 
-      ShopifyIntegration.verify(query_parameters).should be_true
+      ShopifyIntegration.verify(query_parameters).should be true
 
     end
 
@@ -457,7 +457,7 @@ context "update_account" do
                            timestamp: "1337178173",
                            signature: "929b77106a419bde96b151b318557234"} # Changed
 
-      ShopifyIntegration.verify(query_parameters).should be_false
+      ShopifyIntegration.verify(query_parameters).should be false
     end
 
   end

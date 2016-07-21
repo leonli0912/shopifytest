@@ -10,6 +10,7 @@ Rails.application.configure do
    SHOPIFY_API_KEY = "34d0736df67b1e697b603ed91adc3a43"
    SHOPIFY_SHARED_SECRET = "d560f8e4b0d492e63df3636669fa375f"
    REDERICT_URL="https://shopifytest-leon0912.c9users.io/shopify/install"
+   NONCE="shopifynonce"
    DOMAIN = "https://9d31c8928aff767b747f9f918dde997c:df72985be3b69617b2456d6fa2bb1de0@fitnessyun.myshopify.com/admin/orders.json"
 
   config.cache_classes = false

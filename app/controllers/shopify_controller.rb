@@ -12,13 +12,13 @@ class ShopifyController < ApplicationController
     end
 
     # Redirect to the authorization page
-    redirect_to "https://#{params[:shop].gsub(".myshopify.com","")}.myshopify.com/admin/oauth/authorize?client_id=#{SHOPIFY_API_KEY}&redirect_uri=#{REDERICT_URL}&scope=read_products,read_orders,read_customers"
+    redirect_to "https://#{params[:shop].gsub(".myshopify.com","")}.myshopify.com/admin/oauth/authorize?client_id=#{SHOPIFY_API_KEY}&redirect_uri=#{REDERICT_URL}&state=#{NONCE}&scope=read_products,read_orders,read_customers"
 
   end
 
   def install
 
-    if ShopifyIntegration.verify(params)
+    #if ShopifyIntegration.verify(params)
 
       # Initialize the connection to Shopify
       http = Net::HTTP.new(params[:shop], 443)
@@ -61,9 +61,9 @@ class ShopifyController < ApplicationController
       # Redirect to the dashboard
       redirect_to dashboard_index_path
 
-    else
-      render :text => "Unable to verify request"
-    end
+    #else
+      #render :text => "Unable to verify request"
+    #end
 
   end
 

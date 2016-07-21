@@ -26,7 +26,7 @@ class ShopifyIntegration
 
   end
 
-  def update_account
+    def update_account
 
     # This method grabs the ShopifyAPI::Shop information
     # and updates the local record
