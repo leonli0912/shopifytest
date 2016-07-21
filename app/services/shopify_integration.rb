@@ -143,6 +143,7 @@ class ShopifyIntegration
                                 shopify_product_id: shopify_product.id,
                                 account_id: @account_id
                                 )
+          @log.debug "shopify_product_id: #{shopify_product.id}"
           unless product.save
             failed += 1
             next

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160718095248) do
+ActiveRecord::Schema.define(version: 20160721183204) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "shopify_account_url"
@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(version: 20160718095248) do
   add_index "products", ["account_id"], name: "index_products_on_account_id"
 
   create_table "variants", force: :cascade do |t|
-    t.string   "product_id"
+    t.integer  "product_id"
     t.string   "shopify_variant_id"
     t.string   "option1"
     t.string   "option2"

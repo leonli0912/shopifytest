@@ -9,9 +9,9 @@ Rails.application.configure do
    #SHOPIFY_SHARED_SECRET = "f3340157d8ec16c5c96c60d1759c1aa0"
    SHOPIFY_API_KEY = "34d0736df67b1e697b603ed91adc3a43"
    SHOPIFY_SHARED_SECRET = "d560f8e4b0d492e63df3636669fa375f"
-   REDERICT_URL="https://shopifytest-leon0912.c9users.io/shopify/install"
+   REDERICT_URL="http://localhost:3000/shopify/install"
    NONCE="shopifynonce"
-   DOMAIN = "https://shopifytest-leon0912.c9users.io"
+   DOMAIN = "http://localhost:3000"
 
   config.cache_classes = false
 
