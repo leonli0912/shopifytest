@@ -6,6 +6,7 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = current_account.products.all
+    logger.debug "index current_account: #{current_account.products.inspect}"
   end
 
   # GET /products/1
@@ -67,6 +68,7 @@ class ProductsController < ApplicationController
   def import
 
     # Connect to Shopify
+    logger.debug "current_account: #{current_account.attributes.inspect}"
     shopify_integration = ShopifyIntegration.new(url: current_account.shopify_account_url,
     password: current_account.shopify_password, account_id: current_account.id)
 

@@ -1,5 +1,6 @@
 class ShopifyIntegration
-
+  require 'logger'
+  
   attr_accessor :url, :password, :account_id
 
   def initialize(params)
@@ -112,19 +113,19 @@ class ShopifyIntegration
   end
 
   def import_products
-
+    @log = Logger.new('log.txt')
     # Local variables
     created = failed = updated = 0
     page = 1
 
     # Grab the first page of products
     shopify_products = ShopifyAPI::Product.find(:all, params: {limit: 100, page: page})
-
+    @log.debug "products: #{shopify_products.inspect}"
     # Keep looping until no more products are returned
     while shopify_products.size > 0
 
       shopify_products.each do |shopify_product|
-
+        @log.debug "each product: #{shopify_product.attributes.inspect}"
         # See if the product exists
         product = Product.find_by_shopify_product_id(shopify_product.id)
 

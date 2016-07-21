@@ -10,6 +10,8 @@ class DashboardController < ApplicationController
     @contests = current_account.contests.order("created_at desc")
 
     # Load the Products we want to use for Contests
+    logger.debug "load account: #{current_account.attributes.inspect}"
+    logger.debug "load product: #{current_account.products.size}"
     @products = current_account.products.order(:name)
 
   end
