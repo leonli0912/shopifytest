@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(version: 20160721183204) do
   add_index "products", ["account_id"], name: "index_products_on_account_id"
 
   create_table "variants", force: :cascade do |t|
-    t.integer  "product_id"
+    t.string   "product_id"
     t.string   "shopify_variant_id"
     t.string   "option1"
     t.string   "option2"
