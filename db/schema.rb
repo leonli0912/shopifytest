@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160721183204) do
+ActiveRecord::Schema.define(version: 20160722061842) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "shopify_account_url"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20160721183204) do
     t.string   "shopify_shop_name"
     t.string   "shop_owner"
     t.string   "email"
+    t.boolean  "paid"
   end
 
   add_index "accounts", ["email"], name: "index_accounts_on_email"
@@ -88,7 +89,7 @@ ActiveRecord::Schema.define(version: 20160721183204) do
   add_index "products", ["account_id"], name: "index_products_on_account_id"
 
   create_table "variants", force: :cascade do |t|
-    t.integer  "product_id"
+    t.string   "product_id"
     t.string   "shopify_variant_id"
     t.string   "option1"
     t.string   "option2"

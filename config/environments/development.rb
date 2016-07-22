@@ -12,7 +12,7 @@ Rails.application.configure do
    REDERICT_URL=" https://shopifytest-leon0912.c9users.io/shopify/install"
    NONCE="shopifynonce"
    DOMAIN = " https://shopifytest-leon0912.c9users.io"
-
+   MAX_CONTESTS_PER_MONTH = ENV["MAX_CONTESTS_PER_MONTH"] || 3
   config.cache_classes = false
 
   # Do not eager load code on boot.

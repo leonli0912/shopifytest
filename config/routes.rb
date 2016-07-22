@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'accounts' => 'accounts#edit'
+  patch "accounts" => 'accounts#update'
+  put "account"=> 'accounts#update'
+
    # Webhook routes
   get "webhooks/uninstall"
   post "webhooks/uninstall"
