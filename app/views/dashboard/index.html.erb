@@ -17,7 +17,7 @@
       <option>Any Product</option>
       <optgroup label="Specific Product">
         <%- @products.each do |product| -%>
-        <option value="<%= product.shopify_product_id %>"><%= product.name %></option>
+        <option value="<%= product.id %>"><%= product.name %></option>
         <%- end -%>
       </optgroup>
     </select>

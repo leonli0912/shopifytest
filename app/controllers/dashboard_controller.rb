@@ -8,7 +8,7 @@ class DashboardController < ApplicationController
 
     # Load the Products we want to use for Contests
     @products = Product.all.order(:name)
-
+    logger.debug "products #{@products}"
   end
 
 
@@ -16,10 +16,10 @@ class DashboardController < ApplicationController
   # notice message
   def create_contest
     @contest = Contest.new(contest_params)
-
-    # Store the name of the product for easier readability
+# Store the name of the product for easier readability
     @contest.product_name = Product.find_by_shopify_product_id(contest_params[:product_id]).try(:name) if contest_params[:product_id].present?
-
+    logger.debug "contest params :#{@contest.product_name}"
+    
     respond_to do |format|
       if @contest.save
         # Pick a winner

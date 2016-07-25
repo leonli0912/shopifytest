@@ -8,6 +8,7 @@ class AccountsController < ApplicationController
 
   # PATCH/PUT /account
   # PATCH/PUT /account
+
   def update
     # See if they are upgrading to Paid
     shopify_service = ShopifyIntegration.new(url: @account.shopify_account_url,
